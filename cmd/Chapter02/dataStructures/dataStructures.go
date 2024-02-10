@@ -19,16 +19,16 @@ func main() {
 
 	s1 := reflect.ValueOf(&p1).Elem()
 	s2 := reflect.ValueOf(&p2).Elem()
-	fmt.Println("S2= ", s2)
+	fmt.Println("S1 =", s1)
+	fmt.Println("S2 =", s2)
 
 	typeOfT := s1.Type()
-	fmt.Println("P1=", p1)
-	fmt.Println("P2=", p2)
+	fmt.Println("P1 =", p1)
+	fmt.Println("P2 =", p2)
 
 	for i := 0; i < s1.NumField(); i++ {
 		f := s1.Field(i)
 		fmt.Printf("%d: %s ", i, typeOfT.Field(i).Name)
 		fmt.Printf("%s = %v\n", f.Type(), f.Interface())
 	}
-
 }
