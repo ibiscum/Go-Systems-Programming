@@ -27,7 +27,7 @@ func main() {
 
 	count := 0
 	// Visit all Map elements
-	for key, _ := range aMap {
+	for key := range aMap {
 		count++
 		fmt.Printf("%s ", key)
 	}
@@ -36,7 +36,7 @@ func main() {
 
 	count = 0
 	delete(aMap, "Fri")
-	for _, _ = range aMap {
+	for range aMap {
 		count++
 	}
 	fmt.Printf("The aMap has now %d elements\n", count)
@@ -49,7 +49,7 @@ func main() {
 	}
 	anotherMap["Five"] = 5
 	count = 0
-	for _, _ = range anotherMap {
+	for range anotherMap {
 		count++
 	}
 	fmt.Printf("anotherMap has %d elements\n", count)
