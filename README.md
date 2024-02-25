@@ -1,11 +1,8 @@
 
-
-
 # Go Systems Programming
 This is the code repository for [Go Systems Programming](https://www.packtpub.com/networking-and-servers/go-systems-programming?utm_source=github&utm_medium=repository&utm_campaign=9781787125643), published by [Packt](https://www.packtpub.com/?utm_source=github). It contains all the supporting project files necessary to work through the book from start to finish.
+
 ## About the Book
-
-
 Go is the new systems programming language for Linux and UNIX systems. It is also the language in which some of the most prominent Cloud-level systems have been written, for instance Docker et al. Where C programmers used to rule, Go programmers are gaining considerable traction to write highly optimized systems programming code.
 
 Created by the original designers of C and UNIX, it expands the systems programmers toolkit to add a mature, clear programming language. Threads and networking code, as well as traditional systems application become easier to write since pointers are not relevant and garbage collection has been taken away the most problematic area for low-level systems code: memory management.
@@ -14,8 +11,6 @@ This book opens up the world of high-performant systems to the beginning Go prog
 
 ## Instructions and Navigation
 All of the code is organized into folders. Each folder starts with a number followed by the application name. For example, Chapter02.
-
-
 
 The code will look like the following:
 ```
@@ -48,6 +43,5 @@ Please note that at the time of writing this text, the latest Go version is 1.9.
 * [Building Microservices with Go](https://www.packtpub.com/application-development/building-microservices-go?utm_source=github&utm_medium=repository&utm_campaign=9781786468666)
 
 ### Download a free PDF
-
  <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
 <p align="center"> <a href="https://packt.link/free-ebook/9781787125643">https://packt.link/free-ebook/9781787125643 </a> </p>

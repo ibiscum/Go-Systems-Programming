@@ -43,6 +43,5 @@ func main() {
 	for r := 0; r < number; r++ {
 		go writeDataToFile(r, file, w)
 	}
-
 	w.Wait()
 }
