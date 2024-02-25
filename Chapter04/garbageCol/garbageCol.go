@@ -21,17 +21,14 @@ func main() {
 
 	for i := 0; i < 10; i++ {
 		s := make([]byte, 100000000)
-		if s == nil {
-			fmt.Println("Operation failed!")
-		}
+		fmt.Println(len(s))
 	}
 	printStats(mem)
 
 	for i := 0; i < 10; i++ {
 		s := make([]byte, 100000000)
-		if s == nil {
-			fmt.Println("Operation failed!")
-		}
+		fmt.Println(len(s))
+
 		time.Sleep(5 * time.Second)
 	}
 	printStats(mem)

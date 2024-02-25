@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"strings"
 )
@@ -16,7 +15,7 @@ func main() {
 	}
 	input := arguments[1]
 
-	buf, err := ioutil.ReadFile(input)
+	buf, err := os.ReadFile(input)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)

@@ -26,7 +26,7 @@ func main() {
 		}
 	}
 
-	for key, _ := range counts {
+	for key := range counts {
 		fmt.Printf("%s -> %d \n", key, counts[key])
 	}
 }
