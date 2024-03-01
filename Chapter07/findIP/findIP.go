@@ -55,7 +55,7 @@ func main() {
 			}
 		}
 	}
-	for key, _ := range myIPs {
+	for key := range myIPs {
 		fmt.Printf("%s %d\n", key, myIPs[key])
 	}
 }
