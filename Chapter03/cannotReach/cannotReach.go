@@ -8,12 +8,12 @@ import (
 
 func x() int {
 	return -1
-	fmt.Println("Exiting x()") //nolint
+	fmt.Println("Exiting x()")
 }
 
 func y() int {
 	return -1
-	fmt.Println("Exiting y()") //nolint
+	fmt.Println("Exiting y()")
 }
 
 func main() {
