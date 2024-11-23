@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"net/rpc"
 	"os"
-	"sharedRPC"
+
+	"github.com/ibiscum/Go-Systems-Programming/Chapter12/sharedRPC"
 )
 
 func main() {
@@ -21,7 +22,7 @@ func main() {
 		os.Exit(100)
 	}
 
-	args := sharedRPC.MyInts{17, 18, true, false}
+	args := sharedRPC.MyInts{A1: 17, A2: 18, S1: true, S2: false}
 	var reply int
 
 	err = c.Call("MyInterface.Add", args, &reply)

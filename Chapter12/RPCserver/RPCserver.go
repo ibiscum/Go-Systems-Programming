@@ -5,7 +5,8 @@ import (
 	"net"
 	"net/rpc"
 	"os"
-	"sharedRPC"
+
+	"github.com/ibiscum/Go-Systems-Programming/Chapter12/sharedRPC"
 )
 
 type MyInterface int
@@ -14,11 +15,11 @@ func (t *MyInterface) Add(arguments *sharedRPC.MyInts, reply *int) error {
 	s1 := 1
 	s2 := 1
 
-	if arguments.S1 == true {
+	if arguments.S1 {
 		s1 = -1
 	}
 
-	if arguments.S2 == true {
+	if arguments.S2 {
 		s2 = -1
 	}
 
@@ -30,11 +31,11 @@ func (t *MyInterface) Subtract(arguments *sharedRPC.MyInts, reply *int) error {
 	s1 := 1
 	s2 := 1
 
-	if arguments.S1 == true {
+	if arguments.S1 {
 		s1 = -1
 	}
 
-	if arguments.S2 == true {
+	if arguments.S2 {
 		s2 = -1
 	}
 

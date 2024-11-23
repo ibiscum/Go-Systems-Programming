@@ -45,9 +45,10 @@ func main() {
 	myRecord := Record{
 		Name:    "Mihalis",
 		Surname: "Tsoukalos",
-		Tel: []Telephone{Telephone{Mobile: true, Number: "1234-567"},
-			Telephone{Mobile: true, Number: "1234-abcd"},
-			Telephone{Mobile: false, Number: "abcc-567"},
+		Tel: []Telephone{
+			{Mobile: true, Number: "1234-567"},
+			{Mobile: true, Number: "1234-abcd"},
+			{Mobile: false, Number: "abcc-567"},
 		}}
 
 	saveToJSON(filename, myRecord)
