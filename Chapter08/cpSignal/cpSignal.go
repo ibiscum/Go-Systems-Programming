@@ -23,7 +23,7 @@ func Copy(src, dst string, BUFFERSIZE int64) error {
 	FILESIZE = sourceFileStat.Size()
 
 	if !sourceFileStat.Mode().IsRegular() {
-		return fmt.Errorf("%s is not a regular file.", src)
+		return fmt.Errorf("%s is not a regular file", src)
 	}
 
 	source, err := os.Open(src)
@@ -34,7 +34,7 @@ func Copy(src, dst string, BUFFERSIZE int64) error {
 
 	_, err = os.Stat(dst)
 	if err == nil {
-		return fmt.Errorf("File %s already exists.", dst)
+		return fmt.Errorf("file %s already exists", dst)
 	}
 
 	destination, err := os.Create(dst)
@@ -42,10 +42,6 @@ func Copy(src, dst string, BUFFERSIZE int64) error {
 		return err
 	}
 	defer destination.Close()
-
-	if err != nil {
-		panic(err)
-	}
 
 	buf := make([]byte, BUFFERSIZE)
 	for {
@@ -86,7 +82,7 @@ func main() {
 		for {
 			sig := <-sigs
 			switch sig {
-			case syscall.SIGINFO:
+			case syscall.SIGALRM:
 				progressInfo()
 			default:
 				fmt.Println("Ignored:", sig)
