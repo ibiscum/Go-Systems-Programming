@@ -33,9 +33,17 @@ func main() {
 		os.Exit(1)
 	}
 
-	n1, _ := strconv.ParseInt(os.Args[1], 10, 64)
+	n1, err := strconv.ParseInt(os.Args[1], 10, 32)
+	if err != nil {
+		fmt.Printf("Invalid count value: %s\n", os.Args[1])
+		os.Exit(1)
+	}
 	count := int(n1)
-	n2, _ := strconv.ParseInt(os.Args[2], 10, 64)
+	n2, err := strconv.ParseInt(os.Args[2], 10, 32)
+	if err != nil {
+		fmt.Printf("Invalid max value: %s\n", os.Args[2])
+		os.Exit(1)
+	}
 	max := int(n2)
 
 	fmt.Printf("Going to create %d random numbers.\n", count)
