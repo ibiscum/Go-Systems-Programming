@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -74,5 +75,8 @@ func main() {
 	bin := convertToBinary(permissions)
 	newPerms, _ := strconv.ParseUint(bin, 0, 32)
 	newMode := os.FileMode(newPerms)
-	os.Chmod(filename, newMode)
+	err := os.Chmod(filename, newMode)
+	if err != nil {
+		log.Fatal(err)
+	}
 }

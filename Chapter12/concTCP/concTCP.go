@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"net"
 	"os"
 	"strings"
@@ -18,7 +19,10 @@ func handleConnection(c net.Conn) {
 		}
 
 		fmt.Print("-> ", string(netData))
-		c.Write([]byte(netData))
+		_, err = c.Write([]byte(netData))
+		if err != nil {
+			log.Fatal(err)
+		}
 		if strings.TrimSpace(string(netData)) == "STOP" {
 			break
 		}

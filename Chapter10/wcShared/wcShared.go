@@ -28,7 +28,6 @@ func count(filename string) {
 	var nWords int = 0
 
 	f, err := os.Open(filename)
-	defer f.Close()
 	if err != nil {
 		newValue := File{Filename: filename, Lines: 0, Characters: 0, Words: 0, Error: err}
 		aM.Lock()
@@ -36,6 +35,7 @@ func count(filename string) {
 		aM.Unlock()
 		return
 	}
+	defer f.Close()
 
 	r := bufio.NewReader(f)
 	for {

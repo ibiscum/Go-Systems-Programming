@@ -26,10 +26,7 @@ func excludeExtensions(name string, extension string) bool {
 	s := strings.Split(basename, ".")
 	length := len(s)
 	basenameExtension := s[length-1]
-	if basenameExtension == extension {
-		return true
-	}
-	return false
+	return basenameExtension == extension
 }
 
 func main() {
@@ -75,7 +72,7 @@ func main() {
 			return nil
 		}
 
-		if printAll == true {
+		if printAll {
 			fmt.Println(path)
 			return nil
 		}

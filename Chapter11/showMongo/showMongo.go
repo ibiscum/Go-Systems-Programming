@@ -3,10 +3,12 @@ package main
 import (
 	"fmt"
 	"html/template"
-	"labix.org/v2/mgo"
+	"log"
 	"net/http"
 	"os"
 	"time"
+
+	"labix.org/v2/mgo"
 )
 
 var DatabaseName string
@@ -44,7 +46,10 @@ func content(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println("Found:", len(Data), "results!")
-	myT.ExecuteTemplate(w, "mongoDB.gohtml", Data)
+	err = myT.ExecuteTemplate(w, "mongoDB.gohtml", Data)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func main() {
@@ -59,5 +64,8 @@ func main() {
 	}
 
 	http.HandleFunc("/", content)
-	http.ListenAndServe(":8001", nil)
+	err := http.ListenAndServe(":8001", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 }

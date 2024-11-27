@@ -26,7 +26,7 @@ func count(in <-chan File, out chan<- File) {
 			out <- y
 			continue
 		}
-		defer f.Close()
+		// defer f.Close()
 		r := bufio.NewReader(f)
 		for {
 			line, err := r.ReadString('\n')
@@ -39,7 +39,7 @@ func count(in <-chan File, out chan<- File) {
 				continue
 			}
 			y.Lines = y.Lines + 1
-			r := regexp.MustCompile("[^\\s]+")
+			r := regexp.MustCompile(`[^\\s]+`)
 			for range r.FindAllString(line, -1) {
 				y.Words = y.Words + 1
 			}

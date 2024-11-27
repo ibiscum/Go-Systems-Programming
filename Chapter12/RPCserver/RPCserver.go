@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net"
 	"net/rpc"
 	"os"
@@ -47,7 +48,10 @@ func main() {
 	PORT := ":1234"
 
 	myInterface := new(MyInterface)
-	rpc.Register(myInterface)
+	err := rpc.Register(myInterface)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	t, err := net.ResolveTCPAddr("tcp", PORT)
 	if err != nil {

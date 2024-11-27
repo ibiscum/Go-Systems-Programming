@@ -34,11 +34,11 @@ func main() {
 				if mode&0111 != 0 {
 					fountIt = true
 					// if the -s flag is set
-					if *minusS == true {
+					if *minusS {
 						os.Exit(0)
 					}
 					// if the -a flag is set
-					if *minusA == true {
+					if *minusA {
 						fmt.Println(fullPath)
 					} else {
 						fmt.Println(fullPath)
@@ -48,7 +48,7 @@ func main() {
 			}
 		}
 	}
-	if fountIt == false {
+	if !fountIt {
 		os.Exit(1)
 	}
 }

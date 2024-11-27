@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"net"
 	"os"
 	"strings"
@@ -37,7 +38,10 @@ func main() {
 		}
 
 		fmt.Print("-> ", string(netData))
-		c.Write([]byte(netData))
+		_, err = c.Write([]byte(netData))
+		if err != nil {
+			log.Fatal(err)
+		}
 		if strings.TrimSpace(string(netData)) == "STOP" {
 			fmt.Println("Exiting TCP server!")
 			return

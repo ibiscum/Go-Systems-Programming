@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"strings"
 )
@@ -20,7 +21,10 @@ func main() {
 		fmt.Println("Got the -i parameter!")
 		fmt.Print("y/n: ")
 		var answer string
-		fmt.Scanln(&answer)
+		_, err := fmt.Scanln(&answer)
+		if err != nil {
+			log.Fatal(err)
+		}
 		fmt.Println("You entered:", answer)
 	} else {
 		fmt.Println("The -i parameter is not set")

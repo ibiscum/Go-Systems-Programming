@@ -40,7 +40,7 @@ func main() {
 			return err
 		}
 
-		if printAll == true {
+		if printAll {
 			fmt.Println(path)
 			return nil
 		}

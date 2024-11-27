@@ -26,7 +26,7 @@ func main() {
 		reader := bufio.NewReader(os.Stdin)
 		fmt.Print(">> ")
 		text, _ := reader.ReadString('\n')
-		fmt.Fprintf(c, text+"\n")
+		fmt.Fprint(c, text+"\n")
 
 		message, _ := bufio.NewReader(c).ReadString('\n')
 		fmt.Print("->: " + message)

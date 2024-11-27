@@ -15,8 +15,11 @@ var openLogFile os.File
 
 func rotateLogFile(filename string) error {
 	openLogFile.Close()
-	os.Rename(filename, filename+"."+strconv.Itoa(TOTALWRITES))
-	err := setUpLogFile(filename)
+	err := os.Rename(filename, filename+"."+strconv.Itoa(TOTALWRITES))
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = setUpLogFile(filename)
 	return err
 }
 

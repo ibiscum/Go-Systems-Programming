@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io"
+	"log"
 	"net"
 	"net/http"
 	"os"
@@ -17,7 +18,10 @@ func Timeout(network, host string) (net.Conn, error) {
 	if err != nil {
 		return nil, err
 	}
-	conn.SetDeadline(time.Now().Add(timeout))
+	err = conn.SetDeadline(time.Now().Add(timeout))
+	if err != nil {
+		log.Fatal(err)
+	}
 	return conn, nil
 }
 

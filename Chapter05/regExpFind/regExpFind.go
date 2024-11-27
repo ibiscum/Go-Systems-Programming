@@ -27,10 +27,7 @@ func excludeExtensions(name string, extension string) bool {
 	s := strings.Split(basename, ".")
 	length := len(s)
 	basenameExtension := s[length-1]
-	if basenameExtension == extension {
-		return true
-	}
-	return false
+	return basenameExtension == extension
 }
 
 func regularExpression(path, regExp string) bool {
@@ -72,7 +69,7 @@ func main() {
 	Path := flags[0]
 
 	walkFunction := func(path string, info os.FileInfo, err error) error {
-		if regularExpression(path, *minusRE) == false {
+		if !regularExpression(path, *minusRE) {
 			return nil
 		}
 
@@ -89,7 +86,7 @@ func main() {
 			return nil
 		}
 
-		if printAll == true {
+		if printAll {
 			fmt.Println(path)
 			return nil
 		}

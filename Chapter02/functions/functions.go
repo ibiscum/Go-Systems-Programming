@@ -63,4 +63,6 @@ func main() {
 	fmt.Println(namedMinMax(15, 6))
 	min, max := namedMinMax(12, -1)
 	fmt.Println(min, max)
+	fmt.Println(unnamedMinMax(15, 6))
+	fmt.Println(sort(15, 6))
 }

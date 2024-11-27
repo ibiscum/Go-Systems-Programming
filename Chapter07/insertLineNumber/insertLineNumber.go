@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"strings"
 )
@@ -22,7 +21,7 @@ func main() {
 	for _, filename := range flags {
 		fmt.Println("Processing:", filename)
 
-		input, err := ioutil.ReadFile(filename)
+		input, err := os.ReadFile(filename)
 		if err != nil {
 			fmt.Println(err)
 			os.Exit(-1)
@@ -36,7 +35,7 @@ func main() {
 
 		lines[len(lines)-1] = ""
 		output := strings.Join(lines, "\n")
-		err = ioutil.WriteFile(filename, []byte(output), 0644)
+		err = os.WriteFile(filename, []byte(output), 0644)
 		if err != nil {
 			fmt.Println(err)
 			os.Exit(-1)

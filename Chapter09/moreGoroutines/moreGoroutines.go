@@ -10,7 +10,7 @@ func main() {
 
 	for i := 0; i < 10; i++ {
 		go func(x int) {
-			time.Sleep(10)
+			time.Sleep(1000)
 			fmt.Printf("%d ", x)
 		}(i)
 	}

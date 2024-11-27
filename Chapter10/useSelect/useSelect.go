@@ -14,7 +14,7 @@ func createNumber(max int, randomNumberChannel chan<- int, finishedChannel chan 
 		select {
 		case randomNumberChannel <- rand.Intn(max):
 		case x := <-finishedChannel:
-			if x == true {
+			if x {
 				close(finishedChannel)
 				close(randomNumberChannel)
 				return

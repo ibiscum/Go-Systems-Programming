@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -24,7 +25,10 @@ func walk(path string, f os.FileInfo, err error) error {
 	nameOfFile := filepath.Base(path)
 	if regex.MatchString(nameOfFile) {
 		newName := filepath.Dir(path) + "/" + renameString + "_" + nameOfFile
-		os.Rename(path, newName)
+		err := os.Rename(path, newName)
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 	return nil
 }
@@ -40,5 +44,8 @@ func main() {
 	renameString = flag.Arg(1)
 	Path := flag.Arg(2)
 	Path, _ = filepath.EvalSymlinks(Path)
-	filepath.Walk(Path, walk)
+	err := filepath.Walk(Path, walk)
+	if err != nil {
+		log.Fatal(err)
+	}
 }

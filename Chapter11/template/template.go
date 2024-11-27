@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"html/template"
+	"log"
 	"net/http"
 	"os"
 	"strings"
@@ -44,13 +45,19 @@ func dynamicContent(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println("Serving", r.Host, "for", r.URL.Path)
-	myT.ExecuteTemplate(w, "template.gohtml", Data)
+	err := myT.ExecuteTemplate(w, "template.gohtml", Data)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func staticPage(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Serving", r.Host, "for", r.URL.Path)
 	myT := template.Must(template.ParseGlob("static.gohtml"))
-	myT.ExecuteTemplate(w, "static.gohtml", nil)
+	err := myT.ExecuteTemplate(w, "static.gohtml", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func main() {
@@ -64,5 +71,8 @@ func main() {
 
 	http.HandleFunc("/static", staticPage)
 	http.HandleFunc("/dynamic", dynamicContent)
-	http.ListenAndServe(":8001", nil)
+	err := http.ListenAndServe(":8001", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
