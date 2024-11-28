@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"time"
 )
@@ -40,5 +41,8 @@ func main() {
 	m.HandleFunc("/time", timeHandler)
 	m.HandleFunc("/", home)
 
-	http.ListenAndServe(":8001", m)
+	err := http.ListenAndServe(":8001", m)
+	if err != nil {
+		log.Fatal(err)
+	}
 }

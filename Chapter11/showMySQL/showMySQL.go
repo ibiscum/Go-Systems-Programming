@@ -3,9 +3,11 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	_ "github.com/go-sql-driver/mysql"
+	"log"
 	"os"
 	"text/template"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 func main() {
@@ -46,6 +48,10 @@ func main() {
 	{{range $k := .}} {{ printf "\tDatabase Name: %s" $k}}
 	{{end}}
 	`))
-	t.Execute(os.Stdout, DATABASES)
+	err = t.Execute(os.Stdout, DATABASES)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	fmt.Println()
 }

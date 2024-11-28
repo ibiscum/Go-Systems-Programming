@@ -23,7 +23,7 @@ func main() {
 	fileInfo, err := os.Stat(source)
 	if err == nil {
 		mode := fileInfo.Mode()
-		if mode.IsRegular() == false {
+		if !mode.IsRegular() {
 			fmt.Println("Sorry, we only support regular files as source!")
 			os.Exit(1)
 		}
@@ -43,9 +43,11 @@ func main() {
 	}
 
 	destination = newDestination
-	destInfo, err = os.Stat(destination)
+	// destInfo, err = os.Stat(destination)
+	_, err = os.Stat(destination)
+
 	if err == nil {
-		if *minusOverwrite == false {
+		if !*minusOverwrite {
 			fmt.Println("Destination file already exists!")
 			os.Exit(1)
 		}

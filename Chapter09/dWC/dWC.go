@@ -33,7 +33,7 @@ func count(filename string) {
 			fmt.Printf("error reading file %s\n", err)
 		}
 		numberOfLines++
-		r := regexp.MustCompile("[^\\s]+")
+		r := regexp.MustCompile(`[^\\s]+`)
 		for range r.FindAllString(line, -1) {
 			numberOfWords++
 		}

@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	"time"
 )
 
 type Tree struct {
@@ -23,7 +22,7 @@ func traverse(t *Tree) {
 
 func create(n int) *Tree {
 	var t *Tree
-	rand.Seed(time.Now().Unix())
+	// rand.Seed(time.Now().Unix())
 	for i := 0; i < 2*n; i++ {
 		temp := rand.Intn(n)
 		t = insert(t, temp)

@@ -1,11 +1,9 @@
 package main
 
-import
-    "fmt"
+import "fmt"
 
-			// This is a useless comment!
-        func main() {
-  fmt.Println("Hello World!")
+// This is a useless comment!
+func main() {
+	fmt.Println("Hello World!")
 
 }
-

@@ -7,6 +7,7 @@ import (
 	"image/color"
 	"image/png"
 	"io"
+	"log"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -141,5 +142,8 @@ func main() {
 		fmt.Println("plotBar", barWidth*i, yy)
 		i = i + 1
 	}
-	png.Encode(OUTPUT, m)
+	err = png.Encode(OUTPUT, m)
+	if err != nil {
+		log.Fatal(err)
+	}
 }

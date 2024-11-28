@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"log"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -28,7 +29,10 @@ func main() {
 	for _, filename := range arguments[2:] {
 		count := 0
 		buf := []byte(filename)
-		io.WriteString(os.Stdout, string(buf))
+		_, err := io.Writer.Write(os.Stdout, buf)
+		if err != nil {
+			log.Fatal(err)
+		}
 		f, err := os.Open(filename)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "Error: %s\n", err)
@@ -52,8 +56,15 @@ func main() {
 			}
 		}
 		buf = []byte(strconv.Itoa(count))
-		io.WriteString(os.Stdout, " ")
-		io.WriteString(os.Stdout, string(buf))
+		_, err = io.WriteString(os.Stdout, " ")
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		_, err = io.Writer.Write(os.Stdout, buf)
+		if err != nil {
+			log.Fatal(err)
+		}
 		io.WriteString(os.Stdout, "\n")
 	}
 }

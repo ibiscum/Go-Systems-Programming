@@ -55,7 +55,7 @@ func main() {
 			return nil
 		}
 
-		if printAll == true {
+		if printAll {
 			fmt.Println(path)
 			return nil
 		}

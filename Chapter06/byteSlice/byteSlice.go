@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 )
 
@@ -13,7 +14,10 @@ func main() {
 	filename := os.Args[1]
 
 	aByteSlice := []byte("Mihalis Tsoukalos!\n")
-	os.WriteFile(filename, aByteSlice, 0644)
+	err := os.WriteFile(filename, aByteSlice, 0644)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	f, err := os.Open(filename)
 	if err != nil {

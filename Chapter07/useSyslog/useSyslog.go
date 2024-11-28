@@ -21,7 +21,10 @@ func main() {
 	if e != nil {
 		log.Fatal(sysLog)
 	}
-	sysLog.Emerg("Emerg: Logging in Go!")
+	err := sysLog.Emerg("Emerg: Logging in Go!")
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	fmt.Fprintf(sysLog, "log.Print: Logging in Go!")
 }

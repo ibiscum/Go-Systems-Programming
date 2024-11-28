@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 	"strings"
@@ -25,7 +26,10 @@ func main() {
 	permissions := os.ModePerm
 	_, err := os.Stat(NewPath)
 	if os.IsNotExist(err) {
-		os.MkdirAll(NewPath, permissions)
+		err := os.MkdirAll(NewPath, permissions)
+		if err != nil {
+			log.Fatal(err)
+		}
 	} else {
 		fmt.Println(NewPath, "already exists - quitting...")
 		os.Exit(1)
@@ -56,7 +60,10 @@ func main() {
 
 			_, err := os.Stat(pathToCreate)
 			if os.IsNotExist(err) {
-				os.MkdirAll(pathToCreate, permissions)
+				err := os.MkdirAll(pathToCreate, permissions)
+				if err != nil {
+					log.Fatal(err)
+				}
 			} else {
 				fmt.Println("Did not create", pathToCreate, ":", err)
 			}

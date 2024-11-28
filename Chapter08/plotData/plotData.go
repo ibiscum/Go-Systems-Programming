@@ -6,6 +6,7 @@ import (
 	"image"
 	"image/color"
 	"image/png"
+	"log"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -130,5 +131,8 @@ func main() {
 		i = i + 1
 	}
 
-	png.Encode(OUTPUT, m)
+	err = png.Encode(OUTPUT, m)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
