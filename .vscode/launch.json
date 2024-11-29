@@ -5,6 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "ch10 mutexSimple",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "Chapter10/mutexSimple/mutexSimple.go",
+            "args": ["100"]
+        },
+
+        {
             "name": "ch07 appendData",
             "type": "go",
             "request": "launch",
