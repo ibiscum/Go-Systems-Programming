@@ -5,7 +5,6 @@ import (
 	"math/rand"
 	"os"
 	"strconv"
-	"time"
 )
 
 func random(min, max int) int {
@@ -25,7 +24,7 @@ func main() {
 		os.Exit(-1)
 	}
 
-	rand.Seed(time.Now().Unix())
+	// rand.Seed(time.Now().Unix())
 	for i := 0; i < TOTAL; i++ {
 		myrand := random(MIN, MAX)
 		fmt.Print(myrand)

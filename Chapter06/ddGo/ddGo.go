@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"math/rand"
 	"os"
-	"time"
 )
 
 func random(min, max int) int {
@@ -39,7 +38,7 @@ func main() {
 	}
 
 	filename := flags[0]
-	rand.Seed(time.Now().Unix())
+	// rand.Seed(time.Now().Unix())
 
 	_, err := os.Stat(filename)
 	if err == nil {

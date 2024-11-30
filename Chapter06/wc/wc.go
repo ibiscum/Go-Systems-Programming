@@ -31,7 +31,7 @@ func countLines(filename string) (int, int, int) {
 
 		if err == io.EOF {
 			numberOfCharacters += len(line)
-			r := regexp.MustCompile("[^\\s]+")
+			r := regexp.MustCompile(`[^\\s]+`)
 			numberOfWords += len(r.FindAllString(line, -1))
 			break
 		} else if err != nil {
@@ -39,7 +39,7 @@ func countLines(filename string) (int, int, int) {
 		}
 
 		numberOfLines++
-		r := regexp.MustCompile("[^\\s]+")
+		r := regexp.MustCompile(`[^\\s]+`)
 		for range r.FindAllString(line, -1) {
 			numberOfWords++
 		}

@@ -2,6 +2,7 @@ package main
 
 import (
 	"io"
+	"log"
 	"os"
 )
 
@@ -15,6 +16,13 @@ func main() {
 	}
 
 	buf := []byte(myString)
-	io.WriteString(os.Stdout, string(buf))
-	io.WriteString(os.Stdout, "\n")
+	_, err := io.Writer.Write(os.Stdout, buf)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	_, err = io.WriteString(os.Stdout, "\n")
+	if err != nil {
+		log.Fatal(err)
+	}
 }

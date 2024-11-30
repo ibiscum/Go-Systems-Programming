@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net"
 	"os"
 )
@@ -31,6 +32,10 @@ func main() {
 
 	for {
 		conn, err := l.Accept()
+		if err != nil {
+			log.Fatal(err)
+		}
+
 		n, err := conn.Read(buffer)
 		if err != nil {
 			fmt.Println(err)

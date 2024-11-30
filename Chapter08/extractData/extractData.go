@@ -65,6 +65,10 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
-		io.WriteString(os.Stdout, "\n")
+		_, err = io.WriteString(os.Stdout, "\n")
+		if err != nil {
+			log.Fatal(err)
+		}
+
 	}
 }

@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io"
+	"log"
 	"os"
 )
 
@@ -23,9 +24,14 @@ func main() {
 	buf := make([]byte, 8)
 	if _, err := io.ReadFull(f, buf); err != nil {
 		if err == io.EOF {
-			err = io.ErrUnexpectedEOF
+			// err = io.ErrUnexpectedEOF
+			log.Println("error EOF")
 		}
 	}
-	io.WriteString(os.Stdout, string(buf))
+
+	_, err = io.Writer.Write(os.Stdout, buf)
+	if err != nil {
+		log.Fatal(err)
+	}
 	fmt.Println()
 }

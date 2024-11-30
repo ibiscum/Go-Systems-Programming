@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net"
 	"os"
 )
@@ -15,6 +16,9 @@ func main() {
 	CONNECT := arguments[1]
 
 	s, err := net.ResolveUDPAddr("udp", CONNECT)
+	if err != nil {
+		log.Fatal(err)
+	}
 	c, err := net.DialUDP("udp", nil, s)
 
 	if err != nil {
@@ -35,5 +39,8 @@ func main() {
 
 	buffer := make([]byte, 1024)
 	n, _, err := c.ReadFromUDP(buffer)
+	if err != nil {
+		log.Fatal(err)
+	}
 	fmt.Print("Reply: ", string(buffer[:n]))
 }

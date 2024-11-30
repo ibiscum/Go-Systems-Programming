@@ -32,7 +32,8 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	rand.Seed(seed)
+
+	// rand.Seed(seed)
 	f.Close()
 	fmt.Println("Seed:", seed)
 

@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"math/rand"
 	"sync"
-	"time"
 )
 
 var readValue = make(chan int)
@@ -31,7 +30,7 @@ func monitor() {
 }
 
 func main() {
-	rand.Seed(time.Now().Unix())
+	// rand.Seed(time.Now().Unix())
 	go monitor()
 	var waitGroup sync.WaitGroup
 

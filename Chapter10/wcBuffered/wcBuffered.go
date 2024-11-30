@@ -64,7 +64,7 @@ func count(filename string, out chan<- File) {
 			fmt.Printf("error reading file %s\n", err)
 		}
 		nLines++
-		r := regexp.MustCompile("[^\\s]+")
+		r := regexp.MustCompile(`[^\\s]+`)
 		for range r.FindAllString(line, -1) {
 			nWords++
 		}

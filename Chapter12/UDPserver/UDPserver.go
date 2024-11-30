@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net"
 	"os"
 	"strings"
@@ -32,6 +33,9 @@ func main() {
 
 	for {
 		n, addr, err := connection.ReadFromUDP(buffer)
+		if err != nil {
+			log.Fatal(err)
+		}
 		fmt.Print("-> ", string(buffer[0:n]))
 		data := []byte(buffer[0:n])
 		_, err = connection.WriteToUDP(data, addr)

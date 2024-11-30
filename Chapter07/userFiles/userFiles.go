@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 	"os"
 	"os/user"
 	"path/filepath"
@@ -55,6 +56,9 @@ func main() {
 			os.Exit(1)
 		}
 		temp, err := strconv.ParseInt(u.Uid, 10, 32)
+		if err != nil {
+			log.Fatal(err)
+		}
 		uid = int32(temp)
 	}
 

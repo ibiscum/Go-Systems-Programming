@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 )
@@ -25,6 +26,9 @@ func main() {
 	}
 
 	fileinfo, err := os.Lstat(pwd)
+	if err != nil {
+		log.Fatal(err)
+	}
 	if fileinfo.Mode()&os.ModeSymlink != 0 {
 		realpath, err := filepath.EvalSymlinks(pwd)
 		if err == nil {

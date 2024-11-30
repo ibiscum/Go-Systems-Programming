@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 )
@@ -35,9 +36,9 @@ func main() {
 	Path := flags[0]
 
 	walkFunction := func(path string, info os.FileInfo, err error) error {
-		fileInfo, err := os.Stat(path)
+		info, err = os.Stat(path)
 		if err != nil {
-			return err
+			log.Fatal(err)
 		}
 
 		if printAll {
@@ -45,7 +46,7 @@ func main() {
 			return nil
 		}
 
-		mode := fileInfo.Mode()
+		mode := info.Mode()
 		if mode.IsRegular() && *minusF {
 			fmt.Println(path)
 			return nil
@@ -56,22 +57,22 @@ func main() {
 			return nil
 		}
 
-		fileInfo, _ = os.Lstat(path)
-		if fileInfo.Mode()&os.ModeSymlink != 0 {
+		info, _ = os.Lstat(path)
+		if info.Mode()&os.ModeSymlink != 0 {
 			if *minusSL {
 				fmt.Println(path)
 				return nil
 			}
 		}
 
-		if fileInfo.Mode()&os.ModeNamedPipe != 0 {
+		if info.Mode()&os.ModeNamedPipe != 0 {
 			if *minusP {
 				fmt.Println(path)
 				return nil
 			}
 		}
 
-		if fileInfo.Mode()&os.ModeSocket != 0 {
+		if info.Mode()&os.ModeSocket != 0 {
 			if *minusS {
 				fmt.Println(path)
 				return nil

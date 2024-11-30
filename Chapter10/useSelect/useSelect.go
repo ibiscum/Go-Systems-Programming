@@ -6,7 +6,6 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
-	"time"
 )
 
 func createNumber(max int, randomNumberChannel chan<- int, finishedChannel chan bool) {
@@ -24,7 +23,7 @@ func createNumber(max int, randomNumberChannel chan<- int, finishedChannel chan 
 }
 
 func main() {
-	rand.Seed(time.Now().Unix())
+	// rand.Seed(time.Now().Unix())
 	randomNumberChannel := make(chan int)
 	finishedChannel := make(chan bool)
 

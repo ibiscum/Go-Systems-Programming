@@ -18,9 +18,9 @@ func permissionsOfFIle(filename string) string {
 }
 
 func walkFunction(path string, info os.FileInfo, err error) error {
-	_, err = os.Lstat(path)
-	if err != nil {
-		return err
+	_, err_a := os.Lstat(path)
+	if err_a != nil {
+		return err_a
 	}
 
 	if permissionsOfFIle(path) == PERMISSIONS {

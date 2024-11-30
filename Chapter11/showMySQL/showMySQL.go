@@ -25,6 +25,9 @@ func main() {
 
 	connectString := username + ":" + password + "@unix(/tmp/mysql.sock)/information_schema"
 	db, err := sql.Open("mysql", connectString)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	rows, err := db.Query("SELECT DISTINCT(TABLE_SCHEMA) FROM TABLES;")
 	if err != nil {
