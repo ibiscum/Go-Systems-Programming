@@ -24,8 +24,8 @@ func userOfFIle(filename string) int32 {
 	return int32(UID)
 }
 
-func walkFunction(path string, info os.FileInfo, err error) error {
-	_, err = os.Lstat(path)
+func walkFunction(path string, info os.FileInfo, errA error) error {
+	_, err := os.Lstat(path)
 	if err != nil {
 		return err
 	}

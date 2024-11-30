@@ -31,7 +31,7 @@ func Show(c *secret) string {
 	return c.password
 }
 
-func Counts(c secret) int {
+func Counts(c *secret) int {
 	c.RLock()
 	defer c.RUnlock()
 	return c.counter
@@ -52,5 +52,5 @@ func main() {
 
 	fmt.Println("Pass:", Show(&Password))
 	time.Sleep(time.Second)
-	fmt.Println("Counter:", Counts(Password))
+	fmt.Println("Counter:", Counts(&Password))
 }

@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 )
 
-func walkFunction(path string, info os.FileInfo, err error) error {
-	_, err = os.Stat(path)
+func walkFunction(path string, info os.FileInfo, errA error) error {
+	_, err := os.Stat(path)
 	if err != nil {
 		return err
 	}

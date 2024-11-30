@@ -68,7 +68,7 @@ func main() {
 	}
 	Path := flags[0]
 
-	walkFunction := func(path string, info os.FileInfo, err error) error {
+	walkFunction := func(path string, info os.FileInfo, errA error) error {
 		if !regularExpression(path, *minusRE) {
 			return nil
 		}

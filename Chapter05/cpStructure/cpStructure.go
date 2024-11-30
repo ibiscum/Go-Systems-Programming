@@ -35,7 +35,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	walkFunction := func(currentPath string, info os.FileInfo, err error) error {
+	walkFunction := func(currentPath string, info os.FileInfo, errA error) error {
 		fileInfo, _ := os.Lstat(currentPath)
 		if fileInfo.Mode()&os.ModeSymlink != 0 {
 			fmt.Println("Skipping", currentPath)

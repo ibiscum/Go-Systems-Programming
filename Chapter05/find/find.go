@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 )
 
-func walkFunction(path string, info os.FileInfo, err error) error {
+func walkFunction(path string, info os.FileInfo, errA error) error {
 
 	fileInfo, err := os.Stat(path)
 	if err != nil {

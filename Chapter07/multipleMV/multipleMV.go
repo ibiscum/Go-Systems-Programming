@@ -12,7 +12,7 @@ import (
 var RE string
 var renameString string
 
-func walk(path string, f os.FileInfo, err error) error {
+func walk(path string, f os.FileInfo, errA error) error {
 	regex, err := regexp.Compile(RE)
 	if err != nil {
 		fmt.Printf("Error in RE: %s\n", RE)

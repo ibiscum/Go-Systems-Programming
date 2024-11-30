@@ -35,8 +35,8 @@ func main() {
 
 	Path := flags[0]
 
-	walkFunction := func(path string, info os.FileInfo, err error) error {
-		info, err = os.Stat(path)
+	walkFunction := func(path string, fileInfo os.FileInfo, errA error) error {
+		info, err := os.Stat(path)
 		if err != nil {
 			log.Fatal(err)
 		}
