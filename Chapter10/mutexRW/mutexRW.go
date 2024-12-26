@@ -24,11 +24,11 @@ func Change(c *secret, pass string) {
 }
 
 func Show(c *secret) string {
-	fmt.Println("LShow")
+	fmt.Println("LShow: Accessing password")
 	time.Sleep(time.Second)
 	c.RLock()
 	defer c.RUnlock()
-	return c.password
+	return "****" // Do not return the actual password
 }
 
 func Counts(c *secret) int {
@@ -39,10 +39,10 @@ func Counts(c *secret) int {
 
 func main() {
 
-	fmt.Println("Pass:", Show(&Password))
+	fmt.Println("Accessing password")
 	for i := 0; i < 5; i++ {
 		go func() {
-			fmt.Println("Go Pass:", Show(&Password))
+			fmt.Println("Accessing password in goroutine")
 		}()
 	}
 
@@ -50,7 +50,7 @@ func main() {
 		Change(&Password, "123456")
 	}()
 
-	fmt.Println("Pass:", Show(&Password))
+	fmt.Println("Accessing password")
 	time.Sleep(time.Second)
 	fmt.Println("Counter:", Counts(&Password))
 }
