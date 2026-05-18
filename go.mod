@@ -1,13 +1,13 @@
 module github.com/ibiscum/Go-Systems-Programming
 
-go 1.23.1
+go 1.24.0
 
 require (
-	github.com/go-sql-driver/mysql v1.9.3
+	github.com/go-sql-driver/mysql v1.10.0
 	labix.org/v2/mgo v0.0.0-20140701140051-000000000287
 )
 
 require (
-	filippo.io/edwards25519 v1.1.1 // indirect
+	filippo.io/edwards25519 v1.2.0 // indirect
 	launchpad.net/gocheck v0.0.0-20140225173054-000000000087 // indirect
 )
